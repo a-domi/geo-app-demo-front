@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  front:
+    build:
+      context: .
+      args:
+        WORKDIR: ${WORKDIR}
+    container_name: geo-app-demo-front
+    command: npm run dev
+    volumes:
+      - .:/${WORKDIR}
+    env_file:
+      - ./environment/react-app-variables.env
+    ports:
+      - "${FRONT_PORT}:${FRONT_PORT}"
